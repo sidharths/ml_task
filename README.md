@@ -35,4 +35,7 @@ Plan to work on this assignment using pytorch framework
 ## Future works and additional potential approaches to tackle the given problem.
 
 1. Try specialized loss functions like focal loss can be used which deal better than weighted classes in CrossEntropyLoss https://amaarora.github.io/2020/06/29/FocalLoss.html
-2. While model will be sensitive to the initial split between (train, val) and (test). For minority classes if the "hard" cases all end up in test set then model will not be able to train well to generalize. However we can remove some of those issues for the (train, val) set by doing k-fold crossvalidation on them.
+2. While model will be sensitive to the initial data split between (train+val) and (test). For minority classes if the "hard" cases all end up in test set then model will not be able to train well to generalize. However we can remove some of those issues for the (train+val) set by doing k-fold crossvalidation on them.
+3. As part of EDA I would like to eye ball all the samples and check if they are labelled correctly. Some of the cases might be labelled incorrectly.
+4. Definitely collecting more data for the minority classes will be a realistic solution if it is possible to do so.
+5. If it was a truly noisy image (instead of 1 clean channel + 2 gaussian white noise channels) then we could have tried some form of image denoising network https://kornia.readthedocs.io/en/v0.5.0/tutorials/total_variation_denoising.html  I have not looked into this in detail. Perhaps the output images from denoised can be connected with image classifier.
