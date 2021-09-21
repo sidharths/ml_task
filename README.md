@@ -28,9 +28,9 @@ Plan to work on this assignment using pytorch framework
 * Planning to use resnet-18 from pytorch model zoo with pre trained weights
 * adding a final dense layer of 512 input channels and 3 output channels for  the 3 classes
 * Do some image augmentations while training (random horizontal flip random vertical flip). Have to be careful while picking augmentations. Random crop for example cannot be done because it can potentially change the label of the sample for ex from FULL_VISIBLE to partially or not visible.
-* CLAHE normalization to increase contrast.
+* Use albumentations for various image augmentations but carefully avoid any augmentation that can crop the image or transfer data from one channel to other (like A.ChannelShuffle())
 * use nn.CrossEntropyLoss with weights of class to amplify loss contribution of minor classes
-
+* use a learning rate scheduler to stabilize the model for later epochs
 
 ## Future works and additional potential approaches to tackle the given problem.
 
@@ -39,3 +39,4 @@ Plan to work on this assignment using pytorch framework
 3. As part of EDA I would like to eye ball all the samples and check if they are labelled correctly. Some of the cases might be labelled incorrectly.
 4. Definitely collecting more data for the minority classes will be a realistic solution if it is possible to do so.
 5. If it was a truly noisy image (instead of 1 clean channel + 2 gaussian white noise channels) then we could have tried some form of image denoising network https://kornia.readthedocs.io/en/v0.5.0/tutorials/total_variation_denoising.html  I have not looked into this in detail. Perhaps the output images from denoised can be connected with image classifier.
+6. Try out ImbalancedDatasetSampler https://github.com/ufoym/imbalanced-dataset-sampler. I dont understand it well but results they show seem promising.
