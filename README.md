@@ -13,9 +13,10 @@ While the assignment wants an overall accuracy greater than 82% we would need to
 
 some challenges:
 
-1. Due to the class imbalance the split between train, val and test is critical. We want the split sets to be representative of the overall distribution of classes
-2. There are different approaches to deal with class imbalance. One way would be to oversample minority classes during training. Another approach will be to give relative weights of classes to the loss function. So that minority classes are contributing more to the loss.
-3. Overtraining and getting a high training
+1. Due to the class imbalance the split between train, val and test is critical. val set is used to pick the best model during training of several epochs. We want the split sets to be representative of the overall distribution of classes
+2. Due to the approach to have each split with same propotion of classes as overall distribution we end up with a validation and test set of 104 sample. The breakdown of which is **84 VISIBLE, 16 PARTIAL, 4 NOT VISIBLE**. The minority classes are very small (*16 and 4 in size*) in test set and the model performance is sensitive to the "random" factor htat sent what kind of samples (easy or edge cases) into the split.
+3. There are different approaches to deal with class imbalance. One way would be to oversample minority classes during training. Another approach will be to give relative weights of classes to the loss function. So that minority classes are contributing more to the loss.
+4. Overtraining and getting a high training accuracy that is not reflected in validation or test set.
 
 
 
