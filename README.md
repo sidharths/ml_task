@@ -29,14 +29,14 @@ Plan to work on this assignment using pytorch framework
 * Planning to use resnet-18 from pytorch model zoo with pre trained weights
 * adding a final dense layer of 512 input channels and 3 output channels for  the 3 classes
 * Do some image augmentations while training (random horizontal flip random vertical flip). Have to be careful while picking augmentations. Random crop for example cannot be done because it can potentially change the label of the sample for ex from FULL_VISIBLE to partially or not visible.
-* Image augmentation are critical when we have small dataset, and class imbalance. Augmenting the image gives an illusion of having a large dataset. Here the library albumentations eas used for various image augmentations. Note:: **avoid** any augmentation that can **crop the image, rotate image at a multiple other than 90 degrees or transfer data from one channel to other (like A.ChannelShuffle())**
-* Use nn.CrossEntropyLoss with weights of class to amplify loss contribution of minor classes
-* Use a learning rate scheduler to stabilize the model for later epochs
-* Try specialized loss functions like focal loss can be used which deal better than weighted classes in CrossEntropyLoss https://amaarora.github.io/2020/06/29/FocalLoss.html
+* Image augmentation are critical when we have small dataset, and class imbalance. Augmenting the image gives an illusion of having a large dataset. Here the library albumentations eas used for various image augmentations. Note:: **avoid** any augmentation that can **crop the image, rotate image at an angle other than multiple of 90 degrees or transfer data from one channel to other (like A.ChannelShuffle())**
+* Used initally nn.CrossEntropyLoss with weights of class to amplify loss contribution of minor classes
+* Used a learning rate scheduler with exponentially decaying rate to stabilize the model for later epochs
+* Try specialized loss functions like focal loss, they can be used which deal better than weighted classes in CrossEntropyLoss https://amaarora.github.io/2020/06/29/FocalLoss.html
 * FocalLoss gave faster convergence during traning and slightly better results here.
 * Compare performance of minority classes during training and in the test set.
 
-Results
+# FINAL RESULTS
 
 **Overall accuracy**  =   92.31%
 
