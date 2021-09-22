@@ -36,11 +36,20 @@ Plan to work on this assignment using pytorch framework
 * FocalLoss gave faster convergence during traning and slightly better results here.
 * Compare performance of minority classes during training and in the test set.
 
+Results
+
+**Overall accuracy**  =   92.31%
+
+**VISIBLE CLASS precision**  =  98.8%  or 83/84
+
+**PARTIALLY VISIBLE CLASS precision** = 62.5% or 10/16
+
+**NOT VISIBLE CLASS precision** = 75.0% or 3/4
+
 ## Future works and additional potential approaches to tackle the given problem.
 
-1.
-2. While model will be sensitive to the initial data split between (train+val) and (test). For minority classes if the "hard" cases all end up in test set then model will not be able to train well to generalize. However we can remove some of those issues for the (train+val) set by doing k-fold crossvalidation on them.
-3. As part of EDA I would like to eye ball all the samples and check if they are labelled correctly. Some of the cases might be labelled incorrectly.
-4. Definitely collecting more data for the minority classes will be a realistic solution if it is possible to do so.
-5. If it was a truly noisy image (instead of 1 clean channel + 2 gaussian white noise channels) then we could have tried some form of image denoising network https://kornia.readthedocs.io/en/v0.5.0/tutorials/total_variation_denoising.html  I have not looked into this in detail. Perhaps the output images from denoised can be connected with image classifier.
-6. Try out ImbalancedDatasetSampler https://github.com/ufoym/imbalanced-dataset-sampler. I dont understand it well but results they show seem promising.
+1. While model will be sensitive to the initial data split between (train+val) and (test). For minority classes if the "hard" cases all end up in test set then model will not be able to train well to generalize. However we can remove some of those issues for the (train+val) set by doing k-fold crossvalidation on them.
+2. As part of EDA I would like to eye ball all the samples and check if they are labelled correctly. Some of the cases might be labelled incorrectly. Did not have the time to do that at this point.
+3. Definitely collecting more data for the minority classes will be a realistic solution if it is possible to do so.
+4. If it was a truly noisy image (instead of 1 clean channel + 2 gaussian white noise channels) then we could have tried some form of image denoising network https://kornia.readthedocs.io/en/v0.5.0/tutorials/total_variation_denoising.html  I have not looked into this in detail. Perhaps the output images from denoising network can be connected with the input to image classifier. However despite denoising our major concern will remain class imbalance and edge cases in the minority classes.
+5. Try out ImbalancedDatasetSampler https://github.com/ufoym/imbalanced-dataset-sampler. I dont understand it well but results they show seem promising.
